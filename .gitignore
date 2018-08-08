@@ -12,3 +12,6 @@ dist
 
 # IDE
 .idea
+
+
+plugins/dspace-rest-js/

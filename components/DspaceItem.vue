@@ -1,12 +1,6 @@
 <template>
+
     <div v-if="item">
-
-<!--div>{{ JSON.stringify(item.ancestors) }}</div-->
-
-        <!--div v-if="item.uuid">
-            <a :href="'/'">Root</a> &gt;
-            <span v-for="ancestor in item.ancestors"><a :href="'/' + ancestor.type + '/' + ancestor.uuid">{{ ancestor.name }}</a> &gt;</span>
-        </div-->
         <div v-if="item.uuid">
             <nuxt-link :to="'/lib'">Root</nuxt-link> &gt;
             <span v-for="ancestor in item.ancestors"><nuxt-link :to="'/lib/' + ancestor.type + '/' + ancestor.uuid">{{ ancestor.name }}</nuxt-link> &gt;</span>
@@ -18,11 +12,8 @@
             <h2>Communities</h2>
             <ul>
                 <li v-for="val in item.communities">
-                        <!--a :href="'/communities/'+val.uuid">{{ val.name }}</a-->
                         <nuxt-link :to="'/lib/communities/'+val.uuid">{{ val.name }}</nuxt-link>
-    
                 </li>
-            
             </ul>
         </div>
 
@@ -30,11 +21,8 @@
             <h2>Collections</h2>
             <ul>
                 <li v-for="val in item.collections">
-                        <!--a :href="'/collections/'+val.uuid">{{ val.name }}</a-->
                         <nuxt-link :to="'/lib/collections/'+val.uuid">{{ val.name }}</nuxt-link>
-    
                 </li>
-            
             </ul>
         </div>
 
@@ -42,11 +30,8 @@
             <h2>Items</h2>
             <ul>
                 <li v-for="val in item.items">
-                        <!--a :href="'/items/'+val.uuid">{{ val.name }}</a-->
                         <nuxt-link :to="'/lib/items/'+val.uuid">{{ val.name }}</nuxt-link>
-    
                 </li>
-            
             </ul>
         </div>
 
@@ -70,41 +55,43 @@
             </table>
         </div>
 
-
     </div>
 </template>
 
 <script>
 
-//import { connect } from '@billypilgrim/dspace-rest-js';
-//const conn = connect("https://dspace.spbu.ru", "/rest");
-
-//            console.log("<script>");
+import { mapMutations, mapGetters } from 'vuex'
 
 
     export default {
-        props: ['item'],
+//        props: ['item'],
         data() {
             return {
-                //item: { title: {}, content: {} }
             };
-/*
         },
-        asyncData(context) {
-    
-            console.log("asyncData(context)");
-    
-            return conn.getItem()
-                .then( item => {
-                    console.log("getItem()");
-                    console.log(item);
-                    return {
-                        item: item
-                    };
-                });
-*/
+        fetch(context) {
+//          if(process.server) {
+//            return context.store.dispatch("library/loadLibItemData", context.params);
+//            return context.store.dispatch("loadLibItemData", context.params);
+//          }
+        },
+//        computed: {
+//            item() {
+//                return this.$store.state.libItem;
+//            }
+//        },
+        computed: mapGetters({
+            item: 'library/item'
+//            item: 'libItem'
+        }),
+//        mounted() {
+        created() {
+//          this.$store.dispatch("loadLibItemData", this.$route.params);
+        },
+
+        methods: {
         }
-    };
 
-
+}
 </script>
+

@@ -2,7 +2,7 @@
   <v-layout column jjustify-center aalign-center>
     <v-flex xs12 sm8 md6>
     </v-flex>
-      <dspace-item :item="item" />
+      <dspace-item />
   </v-layout>
 </template>
 
@@ -20,14 +20,15 @@ export default {
         },
         fetch(context) {
 //          if(process.server) {
-            return context.store.dispatch("loadLibItemData", context.params);
+//            return context.store.dispatch("loadLibItemData", context.params);
+            return context.store.dispatch("library/loadLibItemData", context.params);
 //          }
         },
-        computed: {
-            item() {
-                return this.$store.state.libItem;
-            }
-        },
+//        computed: {
+//            item() {
+//                return this.$store.state.libItem;
+//            }
+//        },
 //        mounted() {
         created() {
 //          this.$store.dispatch("loadLibItemData", this.$route.params);
