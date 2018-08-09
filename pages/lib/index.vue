@@ -32,6 +32,7 @@ export default {
     created() {
 //        this.$store.dispatch("loadLibItemData", {});
     },
+    layout: 'library'
 
 }
 </script>

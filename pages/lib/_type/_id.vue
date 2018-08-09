@@ -35,7 +35,8 @@ export default {
         },
 
         methods: {
-        }
+        },
+        layout: 'library'
 
 }
 </script>

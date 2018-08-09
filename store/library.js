@@ -3,12 +3,16 @@ import {connect} from '@billypilgrim/dspace-rest-js';
 const libConn = connect(process.env.libServerURL, process.env.libServerPath);
 
 export const state = () => ({
-    item: null
+    item: null,
+    found: []
 });
 
 export const mutations = {
     SET_LIB_ITEM(state, item) {
         state.item = item;
+    },
+    SET_FOUND_LIB_ITEMS(state, items) {
+        state.found = items;
     }
 };
 
@@ -17,6 +21,13 @@ export const actions = {
         },
         async setLibItem(vuexContext, item) {
             vuexContext.commit('SET_LIB_ITEM', item);
+        },
+        findLibItems({commit}, query) {
+            console.log("library/findLibItems()", query);
+//            return libConn.findItems(query)
+//                .then( items => {
+//                    commit('SET_FOUND_LIB_ITEMS', items);
+//                });
         },
         loadLibItemData({commit, dispatch}, {type, id}) {
             //console.log("library/loadLibItemData()");

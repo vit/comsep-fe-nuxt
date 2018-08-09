@@ -1,12 +1,27 @@
 <template>
 
     <div v-if="item">
-        <div v-if="item.uuid">
+        <div v-if="item.uuid" class="pa-3">
             <nuxt-link :to="'/lib'">Root</nuxt-link> &gt;
             <span v-for="ancestor in item.ancestors"><nuxt-link :to="'/lib/' + ancestor.type + '/' + ancestor.uuid">{{ ancestor.name }}</nuxt-link> &gt;</span>
         </div>
 
-        <h1>{{ item.name || "Electronic Library" }}</h1>
+        <!--v-breadcrumbs v-if="item.uuid">
+            <v-icon slot="divider">chevron_right</v-icon -->
+            <!-- v-breadcrumbs-item
+                nuxt
+                aaactive-class=""
+                exact
+                v-for="ancestor in breadcrumbs_list(item.ancestors)"
+                :key="'qwe'+ancestor.href"
+                :to="ancestor.href"
+                :disabled="ancestor.disabled"
+                >
+                {{ ancestor.name }}:{{ ancestor.href }}
+            </v-breadcrumbs-item>
+        </v-breadcrumbs-->
+
+        <h2 v-if="item.name" class="display-1">{{ item.name }}</h2>
 
         <div v-if="item.communities && item.communities.length > 0">
             <h2>Communities</h2>
@@ -62,7 +77,6 @@
 
 import { mapMutations, mapGetters } from 'vuex'
 
-
     export default {
 //        props: ['item'],
         data() {
@@ -90,8 +104,15 @@ import { mapMutations, mapGetters } from 'vuex'
         },
 
         methods: {
+            breadcrumbs_list(items) {
+                let list1 = [{href: '/lib', name: 'Root', disabled: false}];
+                let list2 = items.map( ({uuid, type, name}) => {
+                    return {href: '/lib/' + type + '/' + uuid, name, disabled: false};
+                });
+                return list1.concat(list2);
+            }
         }
 
-}
+};
 </script>
 
