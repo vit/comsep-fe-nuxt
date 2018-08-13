@@ -21,6 +21,16 @@
             </v-breadcrumbs-item>
         </v-breadcrumbs-->
 
+
+          <v-flex xs12 sm3>
+            <v-btn flat icon :color="item_favorite ? 'pink' : 'grey'" @click="fav_click">
+              <v-icon v-if="item_favorite">favorite</v-icon>
+              <v-icon v-else>favorite_border</v-icon>
+            </v-btn>
+          </v-flex>
+
+
+
         <h2 v-if="item.name" class="display-1">{{ item.name }}</h2>
 
         <div v-if="item.communities && item.communities.length > 0">
@@ -70,7 +80,80 @@
             </table>
         </div>
 
+
+
+
+  <!--v-card flat>
+    <v-card-text>
+      <v-container fluid class="pa-0">
+        <v-layout row wrap>
+          <v-flex xs12>
+            <p>Normal</p>
+          </v-flex>
+
+          <v-flex xs12 sm3>
+            <v-btn flat icon color="pink">
+              <v-icon>favorite</v-icon>
+            </v-btn>
+          </v-flex>
+
+          <v-flex xs12 sm3>
+            <v-btn flat icon color="indigo">
+              <v-icon>star</v-icon>
+            </v-btn>
+          </v-flex>
+
+          <v-flex xs12 sm3>
+            <v-btn flat icon color="green">
+              <v-icon>cached</v-icon>
+            </v-btn>
+          </v-flex>
+
+          <v-flex xs12 sm3>
+            <v-btn flat icon color="deep-orange">
+              <v-icon>thumb_up</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+
+        <v-layout row wrap class="mt-5">
+          <v-flex xs12>
+            <p>Disabled</p>
+          </v-flex>
+
+          <v-flex xs12 sm3>
+            <v-btn icon disabled>
+              <v-icon>favorite</v-icon>
+            </v-btn>
+          </v-flex>
+
+          <v-flex xs12 sm3>
+            <v-btn icon disabled>
+              <v-icon>star</v-icon>
+            </v-btn>
+          </v-flex>
+
+          <v-flex xs12 sm3>
+            <v-btn icon disabled>
+              <v-icon>cached</v-icon>
+            </v-btn>
+          </v-flex>
+
+          <v-flex xs12 sm3>
+            <v-btn icon disabled>
+              <v-icon>thumb_up</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card-text>
+  </v-card-->
+
+
+
+
     </div>
+
 </template>
 
 <script>
@@ -84,20 +167,36 @@ import { mapMutations, mapGetters } from 'vuex'
             };
         },
         fetch(context) {
-//          if(process.server) {
-//            return context.store.dispatch("library/loadLibItemData", context.params);
-//            return context.store.dispatch("loadLibItemData", context.params);
-//          }
         },
-//        computed: {
-//            item() {
-//                return this.$store.state.libItem;
-//            }
-//        },
+///*
+        computed: {
+            item() {
+                return this.$store.state.library.item;
+            },
+            item_favorite() {
+                return this.$store.state.library.item.favorite;
+//                return this.item.favorite ? 'favorite' : 'favorite_border';
+            },
+
+/*
+            item_favorite: {
+                get() {
+                    return this.$store.state.library.item.favorite;
+                },
+                set(value) {
+                    this.$store.commit("library/TOGGLE_LIB_ITEM_FAV");
+                }
+            }
+*/
+
+        },
+//*/
+/*
         computed: mapGetters({
             item: 'library/item'
-//            item: 'libItem'
+//            item_fav_icon: 'library/item'
         }),
+*/
 //        mounted() {
         created() {
 //          this.$store.dispatch("loadLibItemData", this.$route.params);
@@ -110,7 +209,18 @@ import { mapMutations, mapGetters } from 'vuex'
                     return {href: '/lib/' + type + '/' + uuid, name, disabled: false};
                 });
                 return list1.concat(list2);
+            },
+            fav_click(e) {
+            //    console.log('click!!!!!');
+                this.$store.commit("library/TOGGLE_LIB_ITEM_FAV");
+            //    console.log(this.$store.state.library.item.favorite);
+            },
+/*
+            item_fav_icon() {
+                return this.$store.state.library.item.favorite ? 'favorite' : 'favorite_border';
+//                return this.item.favorite ? 'favorite' : 'favorite_border';
             }
+*/
         }
 
 };

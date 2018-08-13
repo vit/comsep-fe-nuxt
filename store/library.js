@@ -10,9 +10,14 @@ export const state = () => ({
 export const mutations = {
     SET_LIB_ITEM(state, item) {
         state.item = item;
+        state.item.favorite = false;
     },
     SET_FOUND_LIB_ITEMS(state, items) {
         state.found = items;
+    },
+    TOGGLE_LIB_ITEM_FAV(state) {
+        state.item.favorite = !state.item.favorite;
+//        state.item = state.item;
     }
 };
 
