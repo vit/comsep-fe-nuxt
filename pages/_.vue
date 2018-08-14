@@ -3,7 +3,8 @@
   <v-layout column justify-center align-center>
     <h1>{{ item.title.rendered }}</h1>
     <v-flex xs12 sm8 md6>
-      <div v-html="item.content.rendered"></div>
+      <!-- div v-html="item.content.rendered"></div-->
+        <WPContent :content="item.content.rendered"></WPContent>
     </v-flex>
   </v-layout>
 
@@ -12,7 +13,13 @@
 <script>
 import axios from 'axios';
 
+import WPContent from '~/components/common/WPContent.vue';
+
+
 export default {
+    components: {
+      WPContent
+    },
     data() {
       return {
         item: { title: {}, content: {} }

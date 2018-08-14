@@ -25,12 +25,14 @@
       >
         <v-btn
           v-for="link in links"
-          :key="link"
+          nuxt
+          :key="link.to"
+          :to="link.to"
           color="white"
           flat
           round
         >
-          {{ link }}
+          {{ link.name }}
         </v-btn>
       </v-flex>
 
@@ -95,12 +97,11 @@
         data() {
             return {
                 links: [
-                  'Home',
-                  'About Us',
-                  'Team',
-                  'Services',
-                  'Blog',
-                  'Contact Us'
+                  {name: 'Home', to: "/"},
+                  {name: 'News', to: "/news"},
+                  {name: 'About', to: "/about"},
+                  {name: 'Contacts', to: "/contacts"},
+                  {name: 'Terms of Service', to: "/tos"},
                 ],
                 icons: [
                   'facebook-box',

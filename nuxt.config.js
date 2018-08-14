@@ -77,9 +77,22 @@ module.exports = {
           nodeExternals({
             whitelist: [/^vuetify/]
           })
-        ]
+        ];
       }
+
+        // Enable client-side templates compiling
+        if( !config.resolve )
+          config.resolve = {};
+        if( !config.resolve.alias )
+          config.resolve.alias = {};
+//        config.resolve.alias['vue$'] = 'vue/qqq/vue.esm.js'; // 'vue/dist/vue.common.js' for webpack 1
+        config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js'; // 'vue/dist/vue.common.js' for webpack 1
+//        config.resolve.alias.vue$ = 'vue/dist/vue.esm.js'; // 'vue/dist/vue.common.js' for webpack 1
+//        Object.assign( config.resolve.alias, {'vue$': 'vue/dist/vue.esm.js'} ); // 'vue/dist/vue.common.js' for webpack 1
+
     },
+
+
 
 /*
     plugins: [
@@ -119,6 +132,6 @@ module.exports = {
     libServerPath: "/dspace/rest"
   },
 
-  cache: true
-  
+  cache: true,
+
 }
