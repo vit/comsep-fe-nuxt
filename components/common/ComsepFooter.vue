@@ -86,8 +86,8 @@
             return {
                 links: [
                   {name: 'Home', to: "/"},
-                  {name: 'News', to: "/news"},
                   {name: 'About', to: "/about"},
+                  {name: 'News', to: "/news"},
                   {name: 'Contacts', to: "/contacts"},
                   {name: 'Terms of Service', to: "/tos"},
                 ],

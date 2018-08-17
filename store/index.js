@@ -53,9 +53,13 @@ export const mutations = {
 
 export const actions = {
     async nuxtServerInit({ commit }) {
-        const res = await axios.get('https://comsep-wp-vit2.c9users.io/wp-json/wp/v2/pages');
-        const data = res.data.map( e => getItemData(e) );
-        commit('LOAD_PAGES', data);
+        const res = await axios.get('https://comsep-wp-vit2.c9users.io/wp-json/wp/v2/pages').catch(e => {
+            console.log("ERROR: Can't get the pages list from WP API");
+        });
+        if(res) {
+            const data = res.data.map( e => getItemData(e) );
+            commit('LOAD_PAGES', data);
+        }
     }
 };
 

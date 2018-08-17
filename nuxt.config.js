@@ -80,6 +80,7 @@ module.exports = {
         ];
       }
 
+/*
         // Enable client-side templates compiling
         if( !config.resolve )
           config.resolve = {};
@@ -89,6 +90,7 @@ module.exports = {
         config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js'; // 'vue/dist/vue.common.js' for webpack 1
 //        config.resolve.alias.vue$ = 'vue/dist/vue.esm.js'; // 'vue/dist/vue.common.js' for webpack 1
 //        Object.assign( config.resolve.alias, {'vue$': 'vue/dist/vue.esm.js'} ); // 'vue/dist/vue.common.js' for webpack 1
+*/
 
     },
 
