@@ -113,13 +113,13 @@ import MenuList from '~/components/common/MenuList.vue';
               ],
               gn_menu: [
                 {
-                  icon: 'folder',
-                  title: 'My Submissions',
+                  icon: 'list',
+                  title: 'My Papers',
                   href: '/gn/mypapers',
                 },
                 {
                   icon: 'add',
-                  title: 'Submit New Paper',
+                  title: 'New Paper',
                   href: '/gn/mypapers/new',
                 },
               ],

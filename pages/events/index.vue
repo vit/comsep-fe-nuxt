@@ -4,20 +4,18 @@
     <v-layout row wrap flex>
 
 
-    <v-flex v-for="event in $store.state.events" xs12 sm6 :key="event.id">
-      <v-card height="100%" ffluid ffill-height>
-        <!--v-card-media
-          src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-          height="200px"
-        ></v-card-media-->
+    <v-flex v-for="event in $store.state.events" xs12 md6 :key="event.id">
+      
+      <ConfCardItem :event="event" />
+
+      <!--v-card height="100%" ffluid ffill-height>
 
         <v-card-title primary-title>
           <div>
             <h3 class="hheadline mmb-0" v-html="event.title"></h3>
-            <!--div><span>{{event.start_date | moment("dddd, MMMM Do YYYY")}}</span></div-->
             <div>
-                <span v-if="event.all_day">{{event.start_date | moment("LL")}} &mdash; {{event.end_date | moment("LL")}}</span>
-                <span v-if="!event.all_day">{{event.start_date | moment("LL")}}, {{event.start_date | moment("LT")}} &mdash; {{event.end_date | moment("LT")}}</span>
+                <span v-if="event.all_day" class="grey--text">{{event.start_date | moment("LL")}} &mdash; {{event.end_date | moment("LL")}}</span>
+                <span v-if="!event.all_day" class="grey--text">{{event.start_date | moment("LL")}}, {{event.start_date | moment("LT")}} &mdash; {{event.end_date | moment("LT")}}</span>
             </div>
             <div v-html="event.description"></div>
             <div>Categories: {{ event.categories.map(c => c.name) }}</div>
@@ -29,7 +27,7 @@
           <v-btn flat color="orange">Share</v-btn>
           <v-btn flat color="orange">Explore</v-btn>
         </v-card-actions>
-      </v-card>
+      </v-card-->
     </v-flex>
 
 </v-layout>
@@ -56,7 +54,12 @@
 
 //console.log(Vue.moment().locale());
 
+import ConfCardItem from '@/components/conf/ConfCardItem';
+
 export default {
+
+    components: {ConfCardItem}
+
     
 }
 </script>
