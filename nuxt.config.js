@@ -2,8 +2,6 @@ const pkg = require('./package')
 
 const nodeExternals = require('webpack-node-externals')
 
-//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
 module.exports = {
   mode: 'universal',
 
@@ -42,12 +40,6 @@ module.exports = {
   plugins: [
     '@/plugins/vuetify',
     '@/plugins/moment',
-//      new BundleAnalyzerPlugin({
-//        analyzerMode: 'static',
-//        generateStatsFile: true,
-//        openAnalyzer: false,
-//        logLevel: 'info'
-//      })
   ],
 
   /*
@@ -87,39 +79,7 @@ module.exports = {
 
     },
 
-
-
-/*
-    plugins: [
-      new webpack.DefinePlugin({ // <-- key to reducing React's size
-        'process.env': {
-          'NODE_ENV': JSON.stringify('production')
-        }
-      }),
-      new webpack.optimize.DedupePlugin(), //dedupe similar code 
-      new webpack.optimize.UglifyJsPlugin(), //minify everything
-      new webpack.optimize.AggressiveMergingPlugin()//Merge chunks 
-    ],
-*/
-
-/*
-    plugins: [
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'static',
-        generateStatsFile: true,
-        openAnalyzer: false,
-        logLevel: 'info',
-        path: '~/static/report.html'
-      })
-    ]
-*/
-
   },
-//    symlinks: true,
-//    modulesDir: ['node_modules', '../dspace-rest-js']
-//    modulesDir: ['node_modules', '~/workspace/dspace-rest-js']
-//    modulesDir: ['node_modules', '~/workspace/dspace-rest-js']
-//    modulesDir: ['node_modules', '../modules']
 
   env: {
 //    libURL: (process.env.NODE_ENV === 'production' ? 'http//your-url' : 'http://localhost:3000')

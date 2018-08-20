@@ -9,6 +9,9 @@
         <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn icon flat color="orange">
+                    <v-icon>star_border</v-icon>
+                  </v-btn>
+                  <v-btn icon flat color="orange">
                     <v-icon>favorite_border</v-icon>
                   </v-btn>
                   <v-btn icon flat color="orange">
