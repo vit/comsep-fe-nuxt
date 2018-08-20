@@ -32,7 +32,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    'vuetify/src/stylus/main.styl'
+    'vuetify/src/stylus/main.styl',
+    '@/assets/css/main.scss'
   ],
 
   /*
@@ -83,19 +84,6 @@ module.exports = {
 //      if (ctx.isClient) {
         config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js';
 //      }
-
-
-/*
-        // Enable client-side templates compiling
-        if( !config.resolve )
-          config.resolve = {};
-        if( !config.resolve.alias )
-          config.resolve.alias = {};
-//        config.resolve.alias['vue$'] = 'vue/qqq/vue.esm.js'; // 'vue/dist/vue.common.js' for webpack 1
-        config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js'; // 'vue/dist/vue.common.js' for webpack 1
-//        config.resolve.alias.vue$ = 'vue/dist/vue.esm.js'; // 'vue/dist/vue.common.js' for webpack 1
-//        Object.assign( config.resolve.alias, {'vue$': 'vue/dist/vue.esm.js'} ); // 'vue/dist/vue.common.js' for webpack 1
-*/
 
     },
 

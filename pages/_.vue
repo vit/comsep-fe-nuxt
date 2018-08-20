@@ -1,12 +1,13 @@
 <template>
 
-  <v-layout column justify-center align-center>
-    <h1 class="display-1" v-html="item.title.rendered"></h1>
-    <v-flex xs12 sm8 md6>
-      <!-- div v-html="item.content.rendered"></div-->
-        <WPContent :content="item.content.rendered"></WPContent>
-    </v-flex>
-  </v-layout>
+  <div class="wp-post">
+    <v-layout column justify-center align-center>
+      <h1 class="display-1" v-html="item.title.rendered"></h1>
+      <v-flex xs12 sm8 md6>
+          <WPContent :content="item.content.rendered"></WPContent>
+      </v-flex>
+    </v-layout>
+  </div>
 
 </template>
 
@@ -14,7 +15,6 @@
 import axios from 'axios';
 
 import WPContent from '~/components/common/WPContent.vue';
-//import WPContent from '~/components/common/WPContentTest.vue';
 
 export default {
     components: {

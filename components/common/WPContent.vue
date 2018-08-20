@@ -1,168 +1,40 @@
 <template>
 
-<div>
-  
-  <!--div v-html="content">!!!!!!!</div-->
-
-
-<!--h2>Component's static part</h2-->
-<!--div v-html="content"></div-->
-<component :is="compiled_content"></component>
-
-
-</div>
+  <div class="wp-post-content">
+    <component :is="compiled_content"></component>
+  </div>
 
 </template>
 
 <script>
 
-//import VueCompiler from 'vue/dist/vue.esm';
-
-//import VueCompiler from 'vue/dist/vue';
-
-//import VueCompiler from 'vue';
-
-//import VueWithCompiler from 'vue/dist/vue.esm';
 import Vue from 'vue';
-
-
-Vue.component("my-component",{
-  template: `<h1>My Component</h1>`
-});
-
-
-const template = `
-<div>
-<h1>Add client</h1>
-<div>My static content</div>
-
-<v-btn color="red" @click="btnClick">qqqqq</v-btn>
-
-<my-component></my-component>
-</div>
-`
-
-    export default {
-        props: [
-          'content'
-        ],
-        data() {
-          return {
-            compiled_content: null
-          }
+export default {
+  props: [
+    'content'
+  ],
+  data() {
+    return {
+      compiled_content: null
+    }
+  },
+  computed: {
+  },
+  created(){
+    this.compiled_content = {
+      template: "<div>"+this.content+"</div>",
+      methods: {
+        btnClick() {
+          console.log('%%%%%%%');
         },
-/*
-        render(h) {
-          console.log("render(h)!!!");
-          const res = VueCompiler.compile("<div>"+this.content+"</div>");
-          this.templateRender = res.render;
-          this.$options.staticRenderFns = [];
-          this._staticTrees = [];
-          for (var i in res.staticRenderFns) {
-            this.$options.staticRenderFns.push(res.staticRenderFns[i])
-          }
-          return this.templateRender(h);
-        },
-*/
-        computed: {
-/*
-          compiled_content: () => {
-//            if(process.client) {
-  //            return null;
-  //            console.log("COMPILED!!!");
-  //            return VueCompiler.compile("<div>"+this.content+"</div>");
-//              return VueCompiler.compile("<div> eeeeeeeee </div>").render;
-
-                    console.log(this.content);
-
-
-              return {
-                template: "<div>"+template+"</div>",
-//                template: "<div>"+this.content+"</div>",
-                methods: {
-                  btnClick() {
-                    console.log('%%%%%%%');
-                  }
-                }
-              };
-
-//            } else {
-//              return null;
-//            }
-          }
-*/
-        },
-//        mounted(){
-        created(){
-                    console.log("created()");
-//                    console.log(this.content);
-              this.compiled_content = {
-//                template: "<div>"+template+"</div>",
-                template: "<div>"+this.content+"</div>",
-                methods: {
-                  btnClick() {
-                    console.log('%%%%%%%');
-                  },
-                  btnRegisterClick() {
-                    console.log('Register!!!');
-                  }
-                }
-              };
-
-
-
-
-//          this.compiled_content = VueCompiler.compile("<div> eeeeeeeee </div>");
-//          setTimeout(() => {
-//            this.compiled = VueCompiler.compile(template);
-//            this.compiled_content = VueCompiler.compile("<div>"+this.content+"</div>");
-//            console.log(this.content);
-//            console.log("COMPILED!!!");
-//          }, 1500);
-        },
-        mounted() {
-          console.log("mounted()");
-        },
-        methods: {
+        btnRegisterClick() {
+          console.log('Register!!!');
         }
-
-
-//        computed: {
-//          compiled_content: () => {
-//            return Vue.compile( "<div>aaa</div>" );
-////            return Vue.compile( this.content || '' );
-//          }
-//        },
-
-/*
-        mounted() {
-//        created() {
-//          this.compiled = this.compiled_content;
-//          this.compiled = Vue.compile( this.content || '' );
-          console.log('mounted()');
-          this.compiled = Vue.compile( '<div>ereee ee  er ryery erutyu rturtu</div>' );
-        }
-*/
-/*
-        render(h) {
-          console.log('render(h)');
-          return h({
-            template: "<div>RRRRR</div>"
-          });
-        },
-*/
-
-//    created () {
-//      const compiled = VueWithCompiler.compile(`<div>ereee ee  er ryery erutyu rturtu</div>`);
-//      const compiled = Vue.compile(`<div>ereee ee  er ryery erutyu rturtu</div>`);
-//      this.templateRender = compiled.render;
-//      this.$options.staticRenderFns = [];
-//      for (const staticRenderFunction of compiled.staticRenderFns) {
-//        this.$options.staticRenderFns.push(staticRenderFunction);
-//      }
-//    }
-
-
+      }
+    };
+  },
+  methods: {
+  }
 };
 </script>
 
