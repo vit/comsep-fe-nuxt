@@ -80,6 +80,11 @@ module.exports = {
         ];
       }
 
+//      if (ctx.isClient) {
+        config.resolve.alias['vue$'] = 'vue/dist/vue.esm.js';
+//      }
+
+
 /*
         // Enable client-side templates compiling
         if( !config.resolve )

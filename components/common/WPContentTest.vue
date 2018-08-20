@@ -4,11 +4,8 @@
   
   <!--div v-html="content">!!!!!!!</div-->
 
-
-<!--h2>Component's static part</h2-->
-<!--div v-html="content"></div-->
-<component :is="compiled_content"></component>
-
+  <!--component :is="compiled_content"></component-->
+  <wp-content-inner :content="content"></wp-content-inner>
 
 </div>
 
@@ -16,31 +13,55 @@
 
 <script>
 
-//import VueCompiler from 'vue/dist/vue.esm';
+/*
+  import VueCompiler from 'vue/dist/vue';
+  import VueCompilerEsm from 'vue/dist/vue.esm';
+  import VueCompilerCommon from 'vue/dist/vue.common';
 
-//import VueCompiler from 'vue/dist/vue';
+  let cc = null;
+  if(process.client) {
+    cc = VueCompiler;
+  } else {
+    cc = VueCompilerCommon;
+  }
+*/
 
-//import VueCompiler from 'vue';
-
-//import VueWithCompiler from 'vue/dist/vue.esm';
+//import VueCompiler from 'vue/dist/vue.common';
 import Vue from 'vue';
 
+Vue.component('wp-content-inner', {
+  render: function (createElement) {
+      console.log("in render!!!!!");
+///*
+    return createElement(
+      'div',
+//      'WWWWWWW WWWWWWW WWWWWWW'
+//      VueCompiler.compile("<div>"+this.content+"</div>").render
+      //cc.compile("<div>"+this.content+"</div>").render
+      this.content
+    );
+//*/
 
-Vue.component("my-component",{
-  template: `<h1>My Component</h1>`
+/*
+      if(process.client) {
+//        this.templateRender = VueCompiler.compile("<div>"+this.content+"</div>").render;
+        this.templateRender = VueCompiler.compile("<div>"+this.content+"</div>").render;
+        return this.templateRender();
+      } else {
+        return createElement(
+          'div',
+          'WWWWWWW WWWWWWW WWWWWWW'
+//          this.content
+        );
+      }
+*/
+
+  },
+  props: [
+    'content'
+  ]
 });
 
-
-const template = `
-<div>
-<h1>Add client</h1>
-<div>My static content</div>
-
-<v-btn color="red" @click="btnClick">qqqqq</v-btn>
-
-<my-component></my-component>
-</div>
-`
 
     export default {
         props: [
@@ -64,54 +85,15 @@ const template = `
           return this.templateRender(h);
         },
 */
-        computed: {
-/*
-          compiled_content: () => {
-//            if(process.client) {
-  //            return null;
-  //            console.log("COMPILED!!!");
-  //            return VueCompiler.compile("<div>"+this.content+"</div>");
-//              return VueCompiler.compile("<div> eeeeeeeee </div>").render;
-
-                    console.log(this.content);
-
-
-              return {
-                template: "<div>"+template+"</div>",
-//                template: "<div>"+this.content+"</div>",
-                methods: {
-                  btnClick() {
-                    console.log('%%%%%%%');
-                  }
-                }
-              };
-
-//            } else {
-//              return null;
-//            }
-          }
-*/
-        },
-//        mounted(){
-        created(){
-                    console.log("created()");
-//                    console.log(this.content);
-              this.compiled_content = {
-//                template: "<div>"+template+"</div>",
-                template: "<div>"+this.content+"</div>",
-                methods: {
-                  btnClick() {
-                    console.log('%%%%%%%');
-                  },
-                  btnRegisterClick() {
-                    console.log('Register!!!');
-                  }
-                }
-              };
-
-
-
-
+//        computed: {
+//          compiled_content: () => {
+//            return null;
+//            console.log("COMPILED!!!");
+//            return VueCompiler.compile("<div>"+this.content+"</div>");
+//            return VueCompiler.compile("<div> eeeeeeeee </div>");
+//          }
+//        },
+        mounted(){
 //          this.compiled_content = VueCompiler.compile("<div> eeeeeeeee </div>");
 //          setTimeout(() => {
 //            this.compiled = VueCompiler.compile(template);
@@ -120,12 +102,8 @@ const template = `
 //            console.log("COMPILED!!!");
 //          }, 1500);
         },
-        mounted() {
-          console.log("mounted()");
-        },
         methods: {
         }
-
 
 //        computed: {
 //          compiled_content: () => {

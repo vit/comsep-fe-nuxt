@@ -1,7 +1,7 @@
 <template>
 
   <v-layout column justify-center align-center>
-    <h1 v-html="item.title.rendered"></h1>
+    <h1 class="display-1" v-html="item.title.rendered"></h1>
     <v-flex xs12 sm8 md6>
       <!-- div v-html="item.content.rendered"></div-->
         <WPContent :content="item.content.rendered"></WPContent>
@@ -14,6 +14,7 @@
 import axios from 'axios';
 
 import WPContent from '~/components/common/WPContent.vue';
+//import WPContent from '~/components/common/WPContentTest.vue';
 
 export default {
     components: {
