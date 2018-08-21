@@ -1,38 +1,24 @@
 <template>
 
-  <v-container grid-list-md ttext-xs-center>
-    <v-layout row wrap flex>
+  <!--v-container grid-list-md ttext-xs-center-->
+    <!--v-layout row wrap flex-->
+    <div>
+      <h1 class="text-xs-center display-2">Conferences</h1>
 
+      <Timeline>
+        <template v-for="event in events">
+          <!--div>{{event.type}}</div-->
+          <TimelineBlock v-if="event.type==='item'" :key="event.item.id">
+            <ConfCardItem :event="event.item" />
+          </TimelineBlock>
+          <h2 v-if="event.type==='year'" class="ttext-xs-center display-1 year">{{event.year}}</h2>
+        </template>
+      </Timeline>
 
-    <v-flex v-for="event in $store.state.events" xs12 md6 :key="event.id">
-      
-      <ConfCardItem :event="event" />
+    </div>
+  <!--/v-layout-->
 
-      <!--v-card height="100%" ffluid ffill-height>
-
-        <v-card-title primary-title>
-          <div>
-            <h3 class="hheadline mmb-0" v-html="event.title"></h3>
-            <div>
-                <span v-if="event.all_day" class="grey--text">{{event.start_date | moment("LL")}} &mdash; {{event.end_date | moment("LL")}}</span>
-                <span v-if="!event.all_day" class="grey--text">{{event.start_date | moment("LL")}}, {{event.start_date | moment("LT")}} &mdash; {{event.end_date | moment("LT")}}</span>
-            </div>
-            <div v-html="event.description"></div>
-            <div>Categories: {{ event.categories.map(c => c.name) }}</div>
-            <div>Tags: {{ event.tags.map(c => c.name) }}</div>
-          </div>
-        </v-card-title>
-
-        <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
-        </v-card-actions>
-      </v-card-->
-    </v-flex>
-
-</v-layout>
-
-</v-container>
+<!--/v-container-->
 
 </template>
 
@@ -55,11 +41,50 @@
 //console.log(Vue.moment().locale());
 
 import ConfCardItem from '@/components/conf/ConfCardItem';
+import TimelineBlock from "@/components/c/TimelineBlock";
+import Timeline from "@/components/c/Timeline";
 
 export default {
 
-    components: {ConfCardItem}
+    components: {
+      ConfCardItem,
+      TimelineBlock,
+      Timeline
+    },
 
+    data () {
+      return {
+      };
+    },
+    computed: {
+      events() {
+        return this.$store.state.events
+//          .slice(0)
+//          .reverse()
+          .reduce((acc, item) => {
+            const year = this.$moment(item.start_date).year();
+            const arr = acc.arr;
+            if(acc.year != year) {
+              arr.push({type: 'year', year});
+            }
+            arr.push({type: 'item', item});
+            const res = {year, arr};
+            return res;
+          }, {year: null, arr: []}).arr;
+      }
+    }
     
-}
+};
 </script>
+
+
+<style scoped lang="scss">
+  .confCard {
+  }
+  h1 {
+    margin: 10px 0px 25px 0px;
+  }
+  h2.year {
+    margin: 25px 0px 25px 24px;
+  }
+</style>

@@ -87,6 +87,6 @@ module.exports = {
     libServerPath: "/dspace/rest"
   },
 
-  cache: true,
+//  cache: true,
 
 }

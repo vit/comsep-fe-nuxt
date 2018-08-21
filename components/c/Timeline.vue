@@ -1,10 +1,11 @@
 <template>
-  <div class="wp-post-content">
-    <component :is="compiled_content"></component>
+  <div class="timeline">
+    <slot></slot>
   </div>
 </template>
 
 <script>
+/*
   import Vue from 'vue';
   export default {
     props: [
@@ -21,4 +22,16 @@
       };
     }
   };
+*/
 </script>
+
+<style lang="scss" scoped>
+
+.timeline {
+  -border: solid 1px red;
+    margin: 40px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+}
+  
+</style>
