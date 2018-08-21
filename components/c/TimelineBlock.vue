@@ -1,6 +1,6 @@
 <template>
   <div class="timeline-block">
-    <div class="line"></div>
+    <div v-bind:class="[{deadline: this.deadline}, 'line']"></div>
     <div class="container">
       <slot></slot>
     </div>
@@ -8,24 +8,9 @@
 </template>
 
 <script>
-/*
-  import Vue from 'vue';
   export default {
-    props: [
-      'content'
-    ],
-    created(){
-      this.compiled_content = {
-        template: "<div>"+this.content+"</div>",
-        methods: {
-          btnRegisterClick() {
-            console.log('Register!!!');
-          }
-        }
-      };
-    }
+    props: ['deadline'],
   };
-*/
 </script>
 
 <style lang="scss" sscoped>
@@ -75,7 +60,31 @@
       border: 0px solid red;
     }
 
+    &.deadline {
+      &:after,&:before {
+        background-color: #FF5722;
+        animation-name: color;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+      }
+    }
+
+
   }
+
+
+  @keyframes color {
+    0% {
+      background-color: #FF5722;
+    }
+    50% {
+      background-color: #FFAB91;
+    }
+    100 {
+      background-color: #FF5722;
+    }
+  }
+
 
 }
   

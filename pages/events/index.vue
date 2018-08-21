@@ -8,8 +8,9 @@
       <Timeline>
         <template v-for="event in events">
           <!--div>{{event.type}}</div-->
-          <TimelineBlock v-if="event.type==='item'" :key="event.item.id">
+          <TimelineBlock v-if="event.type==='item'" :deadline="event.deadline" :key="event.item.id">
             <ConfCardItem :event="event.item" />
+            <!--ConfCardItem :event="event.item" :deadline="true" /-->
           </TimelineBlock>
           <h2 v-if="event.type==='year'" class="ttext-xs-center display-1 year">{{event.year}}</h2>
         </template>
@@ -67,7 +68,8 @@ export default {
             if(acc.year != year) {
               arr.push({type: 'year', year});
             }
-            arr.push({type: 'item', item});
+            arr.push({type: 'item', item, deadline: this.$moment(item.start_date).year() == this.$moment().year()});
+//            arr.push({type: 'item', item});
             const res = {year, arr};
             return res;
           }, {year: null, arr: []}).arr;
