@@ -1,18 +1,21 @@
 
 import axios from 'axios';
 
-      const getItemData = e => {
+      const getPageItemData = e => {
         {
 //          return {id: e.id, link: e.link.replace("https://acanud.ru", ""), title: e.title.rendered};
           return {id: e.id, link: e.link.replace("https://comsep-wp-vit2.c9users.io", ""), title: e.title.rendered};
         }
       };
 
+const GET_ALL_EVENTS_URL = "https://comsep-wp-vit2.c9users.io/wp-json/tribe/events/v1/events/?page=1&per_page=50&start_date=1999-01-01%2000:00:00&end_date=2099-12-31";
+
 
 export const state = () => ({
     pages: [
     ],
     events: [
+/*
         {"id":138,"global_id":"acanud.ru?id=138","global_id_lineage":["acanud.ru?id=138"],"author":"1","status":"publish","date":"2017-01-01 20:00:55","date_utc":"2017-01-01 17:00:55","modified":"2018-03-11 02:51:37","modified_utc":"2018-03-10 23:51:37","url":"https:\/\/acanud.ru\/event\/cys-2017\/","rest_url":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/events\/138","title":"XIX \u043a\u043e\u043d\u0444\u0435\u0440\u0435\u043d\u0446\u0438\u044f \u043c\u043e\u043b\u043e\u0434\u044b\u0445 \u0443\u0447\u0435\u043d\u044b\u0445 &#171;\u041d\u0430\u0432\u0438\u0433\u0430\u0446\u0438\u044f \u0438 \u0443\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0434\u0432\u0438\u0436\u0435\u043d\u0438\u0435\u043c&#187; (\u041a\u041c\u0423 2017)","description":"","excerpt":"","slug":"cys-2017","image":false,"all_day":true,"start_date":"2017-03-14 00:00:00","start_date_details":{"year":"2017","month":"03","day":"14","hour":"00","minutes":"00","seconds":"00"},"end_date":"2017-03-17 23:59:59","end_date_details":{"year":"2017","month":"03","day":"17","hour":"23","minutes":"59","seconds":"59"},"utc_start_date":"2017-03-13 21:00:00","utc_start_date_details":{"year":"2017","month":"03","day":"13","hour":"21","minutes":"00","seconds":"00"},"utc_end_date":"2017-03-17 20:59:59","utc_end_date_details":{"year":"2017","month":"03","day":"17","hour":"20","minutes":"59","seconds":"59"},"timezone":"UTC+3","timezone_abbr":"UTC+3","cost":"","cost_details":{"currency_symbol":"","currency_position":"prefix","values":[]},"website":"http:\/\/elektropribor.spb.ru\/kmu2017\/","show_map":true,"show_map_link":false,"hide_from_listings":false,"sticky":false,"featured":false,"categories":[{"name":"\u041a\u043e\u043d\u0444\u0435\u0440\u0435\u043d\u0446\u0438\u0438","slug":"conferences","term_group":0,"term_taxonomy_id":4,"taxonomy":"tribe_events_cat","description":"","parent":0,"count":6,"filter":"raw",
             "id":4,"urls":{"self":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/categories\/4","collection":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/categories"}}],"tags":[{"name":"2017","slug":"2017","term_group":0,"term_taxonomy_id":15,"taxonomy":"post_tag","description":"","parent":0,"count":4,"filter":"raw",
             "id":15,"urls":{"self":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/tags\/15","collection":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/tags"}},{"name":"\u041a\u041c\u0423","slug":"%d0%ba%d0%bc%d1%83","term_group":0,"term_taxonomy_id":16,"taxonomy":"post_tag","description":"","parent":0,"count":1,"filter":"raw",
@@ -42,12 +45,16 @@ export const state = () => ({
             "id":12,"urls":{"self":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/tags\/12","collection":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/tags"}},{"name":"ICINS","slug":"icins","term_group":0,"term_taxonomy_id":9,"taxonomy":"post_tag","description":"","parent":0,"count":5,"filter":"raw",
             "id":9,"urls":{"self":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/tags\/9","collection":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/tags"}},{"name":"\u041c\u041a\u0418\u041d\u0421","slug":"%d0%bc%d0%ba%d0%b8%d0%bd%d1%81","term_group":0,"term_taxonomy_id":10,"taxonomy":"post_tag","description":"","parent":0,"count":5,"filter":"raw",
             "id":10,"urls":{"self":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/tags\/10","collection":"https:\/\/acanud.ru\/wp-json\/tribe\/events\/v1\/tags"}}],"venue":{"id":127,"author":"1","status":"publish","date":"2018-03-10 19:49:44","date_utc":"2018-03-10 16:49:44","modified":"2018-03-10 19:53:55","modified_utc":"2018-03-10 16:53:55","url":"https:\/\/acanud.ru\/%D0%BC%D0%B5%D1%81%D1%82%D0%BE-%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F\/127\/","venue":"\u0426\u041d\u0418\u0418 &#171;\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043f\u0440\u0438\u0431\u043e\u0440&#187;","slug":"127","address":"\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433, \u0443\u043b. \u041c\u0430\u043b\u0430\u044f \u041f\u043e\u0441\u0430\u0434\u0441\u043a\u0430\u044f, 30.","city":"\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433","country":"Russian Federation","phone":"+7 (812) 499 82 10","website":"http:\/\/elektropribor.spb.ru\/","show_map":true,"show_map_link":true,"global_id":"acanud.ru?id=127","global_id_lineage":["acanud.ru?id=127"]},"organizer":[]}
+*/
     ]
 });
 
 export const mutations = {
-    LOAD_PAGES(state, pages) {
+    SET_PAGES(state, pages) {
         state.pages = pages;
+    },
+    SET_EVENTS(state, data) {
+        state.events = data;
     },
 };
 
@@ -57,8 +64,16 @@ export const actions = {
             console.log("ERROR: Can't get the pages list from WP API");
         });
         if(res) {
-            const data = res.data.map( e => getItemData(e) );
-            commit('LOAD_PAGES', data);
+            const data = res.data.map( e => getPageItemData(e) );
+            commit('SET_PAGES', data);
+        }
+        const resConfs = await axios.get(GET_ALL_EVENTS_URL).catch(e => {
+            console.log("ERROR: Can't get the events list from WP API");
+        });
+        if(resConfs) {
+            console.log(resConfs.data);
+            const dataConfs = resConfs.data.events.map( e => e );
+            commit('SET_EVENTS', dataConfs);
         }
     }
 };
