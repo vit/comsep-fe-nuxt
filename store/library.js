@@ -22,13 +22,14 @@ export const mutations = {
 };
 
 export const actions = {
-        async nuxtServerInit({ commit }) {
-        },
+    async nuxtServerInit({ commit }) {
+        console.log("library/nuxtServerInit()");
+    },
         async setLibItem(vuexContext, item) {
             vuexContext.commit('SET_LIB_ITEM', item);
         },
         findLibItems({commit}, query) {
-            console.log("library/findLibItems()", query);
+//            console.log("library/findLibItems()", query);
 //            return libConn.findItems(query)
 //                .then( items => {
 //                    commit('SET_FOUND_LIB_ITEMS', items);

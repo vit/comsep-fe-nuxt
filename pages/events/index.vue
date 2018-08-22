@@ -59,7 +59,10 @@ export default {
     },
     computed: {
       events() {
-        return this.$store.state.events
+//        return this.$store.state.events
+        return this.$store.state.events.all
+//        return this.$store.getters.allCached
+//        return this.$store.getters.allCached
 //          .slice(0)
 //          .reverse()
           .reduce((acc, item) => {
@@ -74,8 +77,17 @@ export default {
             return res;
           }, {year: null, arr: []}).arr;
       }
-    }
-    
+    },
+
+        fetch(context) {
+//          console.log("events/index/fetch()");
+//          if(process.server) {
+//            return context.store.dispatch("loadLibItemData", context.params);
+            return context.store.dispatch("events/loadAllEvents", {});
+//          }
+        },
+
+
 };
 </script>
 
