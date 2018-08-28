@@ -18,6 +18,8 @@
     "express-http-proxy": "^1.2.0",
     "is-url": "^1.2.4",
     "nuxt": "^1.0.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
     "vue-moment": "^4.0.0",
     "vuetify": "^1.0.19"
   },
