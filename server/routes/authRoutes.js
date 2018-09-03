@@ -6,13 +6,31 @@ module.exports = (app) => {
     app.get(
       '/auth/google',
       passport.authenticate('google', {
-        scope: ['profile', 'email']
+        scope: ['profile', 'email'],
       })
     );
 
     app.get(
       '/auth/google/callback',
-      passport.authenticate('google')
+      passport.authenticate('google', {
+        successRedirect: '/api/current_user',
+        failureRedirect: '/'
+      }),
+    );
+
+    app.get(
+      '/api/logout',
+      (req, res) => {
+          req.logout();
+          res.send(req.user);
+      }
+    );
+
+    app.get(
+      '/api/current_user',
+      (req, res) => {
+          res.send(req.user);
+      }
     );
 
 }
