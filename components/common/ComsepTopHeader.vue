@@ -17,7 +17,7 @@
             <v-btn
               flat
               small
-              to="/"
+              tto="/"
               slot="activator"
             >
               Log in
@@ -165,7 +165,8 @@ import MenuList from '~/components/common/MenuList.vue';
 //                  icon: 'exit_to_app',
                   icon: 'power_settings_new',
                   title: 'Logout',
-                  href: '/api/logout'
+                  href: '/api/logout',
+                  external: true
                 },
                 //{ divider: true, inset: true },
               ],
