@@ -87,6 +87,34 @@ module.exports = {
     libServerPath: "/dspace/rest"
   },
 
+///*
+  modules: [
+//    '@nuxtjs/font-awesome',
+    'nuxt-fontawesome',
+/*
+    ['nuxt-fontawesome', {
+      component: 'fa', 
+      imports: [
+        //import whole set
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['fas']
+        },
+        {
+          set: '@fortawesome/free-brands-svg-icons',
+          icons: ['fab']
+        },
+      ]
+    }]
+*/
+  ],
+//*/
+
+    fontawesome: {
+      component: 'fa'
+    },
+
+
 //  cache: true,
 
 }

@@ -1,12 +1,9 @@
 <template>
   <v-app light>
-  <div class="app">
 
     <ComsepTopHeader :toolbarAttr='{ccolor:"teal darken-2", dark: true}' />
 
     <ComsepHeader :toolbarAttr='{dark:true, ccolor:"teal lighten-2"}' :title='title' />
-
-
 
     <v-content>
       <v-container>
@@ -16,11 +13,8 @@
       </v-container>
     </v-content>
 
-
     <ComsepFooter color='' />
 
-
-  </div>
   </v-app>
 </template>
 
