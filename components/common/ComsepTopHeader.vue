@@ -1,8 +1,59 @@
 <template>
 
-    <div>
+      <v-system-bar fixed status v-bind="toolbarAttr" style="height: 28px;">
+        <v-spacer></v-spacer>
 
-    <v-toolbar fixed app dense v-bind="toolbarAttr" style="margin-top: 28px;">
+        <!--v-btn
+          iicon
+          flat
+          small
+          sstyle="height: 24px;"
+        >
+          Log in
+        </v-btn-->
+
+
+        <v-menu offset-y open-on-hover>
+            <v-btn
+              flat
+              small
+              to="/"
+              slot="activator"
+            >
+              Log in
+            </v-btn>
+            <MenuList :list="login_menu" />
+        </v-menu>
+
+
+        <!--v-btn
+          icon
+          flat
+          small
+          sstyle="height: 24px;"
+        >
+          <v-icon ssmall>person</v-icon>
+        </v-btn-->
+
+      <v-menu offset-y open-on-hover>
+        <v-btn
+          icon
+          flat
+          small
+          slot="activator"
+        >
+          <v-icon>person</v-icon>
+        </v-btn>
+          <MenuList :list="user_menu" />
+      </v-menu>
+
+
+      </v-system-bar>
+
+
+    <!--div>
+
+    <v-toolbar fixed app dense v-bind="toolbarAttr" style="top: 28px;">
 
       <v-toolbar-title v-text="title"></v-toolbar-title>
 
@@ -23,7 +74,6 @@
 
         <v-btn flat to="/news">News</v-btn>
         <v-btn flat to="/events">Events</v-btn>
-        <!--v-btn flat to="/gn">Journal</v-btn-->
 
         <v-menu offset-y open-on-hover>
             <v-btn
@@ -50,7 +100,7 @@
 
       </v-toolbar-items>
 
-      <!--v-btn
+      <v-btn
         title="Log in"
         icon
         flat
@@ -61,10 +111,10 @@
         to="/auth/google"
       >
         <v-icon>exit_to_app</v-icon>
-      </v-btn-->
+      </v-btn>
 
 
-      <!--v-menu offset-y open-on-hover>
+      <v-menu offset-y open-on-hover>
         <v-btn
           icon
           flat
@@ -76,13 +126,12 @@
           <v-icon>person</v-icon>
         </v-btn>
           <MenuList :list="user_menu" />
-      </v-menu-->
+      </v-menu>
 
     </v-toolbar>
 
 
-
-    </div>
+    </div-->
 
 </template>
 
@@ -120,35 +169,12 @@ import MenuList from '~/components/common/MenuList.vue';
                 },
                 //{ divider: true, inset: true },
               ],
-              lib_menu: [
+              login_menu: [
                 {
-                  icon: 'favorite',
-                  title: 'My Favorites',
-                  href: '/lib/favorites',
-                },
-              ],
-              gn_menu: [
-                {
-                  icon: 'list',
-                  title: 'My Papers',
-                  href: '/gn/mypapers',
-                },
-                {
-                  icon: 'add',
-                  title: 'New Paper',
-                  href: '/gn/mypapers/new',
-                },
-              ],
-              home_menu: [
-                {
-                  icon: 'info',
-                  title: 'About',
-                  href: '/about',
-                },
-                {
-                  icon: 'email',
-                  title: 'Contacts',
-                  href: '/contacts',
+                  //icon: 'info',
+                  title: 'Use Google account',
+                  href: '/auth/google',
+                  external: true
                 },
               ]
             };

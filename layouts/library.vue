@@ -2,6 +2,7 @@
   <v-app light>
   <div class="app">
 
+    <ComsepTopHeader :toolbarAttr='{ccolor:"teal darken-2", dark: true}' />
 
     <ComsepHeader :toolbarAttr='{dark:true, ccolor:"teal lighten-2"}' :title='title' />
 
@@ -24,6 +25,7 @@
 </template>
 
 <script>
+  import ComsepTopHeader from '~/components/common/ComsepTopHeader.vue';
   import ComsepHeader from '~/components/common/ComsepHeader.vue';
   import ComsepFooter from '~/components/common/ComsepFooter.vue';
 
@@ -31,6 +33,7 @@
 
   export default {
     components: {
+      ComsepTopHeader,
       ComsepHeader,
       ComsepFooter,
       SearchForm

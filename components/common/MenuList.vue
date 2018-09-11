@@ -17,13 +17,15 @@
 
             <v-list-tile
               nuxt
-              :to='item.href'
+              :tto='item.href'
+              :hhref='item.href'
+              v-bind="item.external ? {'href': item.href} : {'to': item.href}"
               v-else
               :key="item.title"
               avatar
               @click=""
             >
-              <v-list-tile-avatar>
+              <v-list-tile-avatar v-if="item.icon">
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-tile-avatar>
 
